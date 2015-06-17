@@ -1,5 +1,12 @@
+Seleccione pregunta
 <table>
 <% var i; for (i=0; i < quizes.length; i++) { %>
-   <tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
+   <tr><td align="left"><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
 <% } %>
 </table>
+O busque una que contenga...
+<form method="get" action="/quizes">
+  <input type="text" name="search" value="Texto a buscar"/>
+  <input type="submit" value="Enviar"/>
+</form>
+<p>

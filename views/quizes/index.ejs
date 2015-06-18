@@ -4,7 +4,8 @@ Seleccione pregunta
    <tr><td align="left"><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
 <% } %>
 </table>
-O busque una que contenga...
+<a href="/quizes/new"><button type="button">Cree una nueva</button></a>
+<p>O busque una que contenga...
 <form method="get" action="/quizes">
   <input type="text" name="search" value="Texto a buscar"/>
   <input type="submit" value="Enviar"/>

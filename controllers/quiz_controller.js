@@ -89,7 +89,8 @@ exports.update = function(req, res) {
   req.quiz.pregunta  = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
 
-  var errors = req.quiz.validate();//ya qe el objeto errors no tiene then(
+  var errors = req.quiz.validate();
+//Esto se hace asi por quiz.validate() no tiene then(), devuelve null.
   if (errors)
    {
    var i=0; var errores=new Array();//se convierte en [] con la propiedad message por compatibilida con layout
@@ -100,26 +101,14 @@ exports.update = function(req, res) {
       .save({fields: ["pregunta", "respuesta"]})
       .then( function(){ res.redirect('/quizes')}) ;
   }
-
-
-/*
-  req.quiz
-  .validate()  ////jejeje otra vezzzzz
-  .then(
-    function(err){
-      if (err) {
-        res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
-      } else {
-        req.quiz     // save: guarda campos pregunta y respuesta en DB
-        .save( {fields: ["pregunta", "respuesta"]})
-        .then( function(){ res.redirect('/quizes');});
-      }     // Redirección HTTP a lista de preguntas (URL relativo)
-    }
-  );
-*/
 };
 
-
+// DELETE /quizes/:id
+exports.destroy = function(req, res) {
+  req.quiz.destroy().then( function() {
+    res.redirect('/quizes');
+  }).catch(function(error){next(error)});
+};
 
 exports.author = function(req,res) {
     res.render('author');

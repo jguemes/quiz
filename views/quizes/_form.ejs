@@ -1,6 +1,42 @@
+<br>
 <label for="preg" class="rem">Pregunta:</label>
+
+<% if ( quiz.pregunta==="Pregunta") {
+   input_data="placeholder=";
+} else {
+   input_data="value=";
+}
+%>
+
+<input type="text" id="preg" name="quiz[pregunta]" <%= input_data %>"<%= quiz.pregunta %>"/> <p>
+<label for="resp" class="rem">Respuesta:</label>
+<input type="text" id="resp" name="quiz[respuesta]" <%= input_data %>"<%= quiz.respuesta %>"/> <p>
+<label for="tema" class="rem">Tema:</label>
+
+<!--
 <input type="text" id="preg" name="quiz[pregunta]"  value="<%= quiz.pregunta %>"/> <p>
 <label for="resp" class="rem">Respuesta:</label>
 <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<label for="tema" class="rem">Tema:</label>
+-->
+<select name="quiz[tema]">
+
+    <%
+
+//  Hay que buscar el tema seleccionado para poner option a selected:
+
+    var temas = ["Otro","Humanidades","Ocio","Ciencia","Tecnologia"];
+        for (n_tema in temas) {
+           var tema_sel=temas[n_tema];
+           var selected = "";
+           if (temas[n_tema]===quiz.tema) {
+              selected=" selected";
+           } else {
+             selected="";
+           }
+     %>
+   <option value="<%= tema_sel %>"<%= selected %>><%= temas[n_tema] %></option>
+      <% } //  del for %>
+</select><br><br>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">

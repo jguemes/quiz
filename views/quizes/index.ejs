@@ -2,6 +2,7 @@ Seleccione pregunta
 <table>
 <% var i; for (i=0; i < quizes.length; i++) { %>
    <tr>
+    <td align="left"><h4><%= quizes[i].tema %>:&nbsp&nbsp</h4></td>
      <td align="left"><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
      <td align="left"><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
      <td>

@@ -40,6 +40,9 @@ Quiz.hasMany(Comment);
 exports.Quiz = Quiz;
 exports.Comment = Comment;
 
+// esto se exporta para poder hacer sequelize.query()
+exports.sequelize = sequelize;
+
 //  sequelize.sync()  crea e inicializa tabla de preguntas en DB
 sequelize.sync().success(function() {
   Quiz.count().success(function (count){

@@ -1,18 +1,28 @@
-<br>
-<label for="preg" class="rem">Pregunta:</label>
+<div align="center">
+<table>
+<tr><td>
 
+
+
+<label for="preg" class="rem">Pregunta:</label>
+</td>
 <% if ( quiz.pregunta==="Pregunta") {
    input_data="placeholder=";
 } else {
    input_data="value=";
 }
 %>
-
-<input type="text" id="preg" name="quiz[pregunta]" <%= input_data %>"<%= quiz.pregunta %>"/> <p>
+<td>
+<input type="text" id="preg" name="quiz[pregunta]" <%= input_data %>"<%= quiz.pregunta %>"/>
+</td></tr>
+<tr><td>
 <label for="resp" class="rem">Respuesta:</label>
-<input type="text" id="resp" name="quiz[respuesta]" <%= input_data %>"<%= quiz.respuesta %>"/> <p>
+</td><td>
+<input type="text" id="resp" name="quiz[respuesta]" <%= input_data %>"<%= quiz.respuesta %>"/>
+</td></tr>
+<tr><td>
 <label for="tema" class="rem">Tema:</label>
-
+</td><td>
 <select name="quiz[tema]">
 
     <%
@@ -31,6 +41,11 @@
      %>
    <option value="<%= tema_sel %>"<%= selected %>><%= temas[n_tema] %></option>
       <% } //  del for %>
-</select><br><br>
+</select>
+</td></tr>
+<tr><td></td><td>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">
+</td></tr>
+</table>
+</div>
